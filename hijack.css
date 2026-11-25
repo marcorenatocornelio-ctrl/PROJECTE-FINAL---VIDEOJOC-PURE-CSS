@@ -175,7 +175,7 @@ div.game-over {
       top: -100vh;
       left: 0;
       z-index: 3;
-      background-color: #4ce71c;
+      background-color: #8f928d;
       animation: appear 0.25s forwards;
       animation-delay: 10s;
 }
@@ -193,4 +193,11 @@ div.game-over {
 .game-over > h3.encerts::after{
   content: counter(encerts);
 
+}
+
+div.game-over > a {
+  font-size: 20px;
+  padding: 10px;
+  color: rgb(40, 14, 158);
+  font-style: bold;
 }
