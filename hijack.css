@@ -1,0 +1,196 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  background: #e9b58b;
+  font-family: "Doto";
+  color: #333;
+  font-size: 16px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  counter-reset: encerts;
+
+
+}
+
+header {
+  width: 100%;
+  height: 50px;
+  background-color: bisque;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-image: url('assets/tejado.jpg');
+  background-size: 300px;
+  color: white; 
+
+}
+
+header h1 {
+  font-size: 1.8em;
+  background-color: rgb(234, 106, 42);
+}
+main{
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url(assets/wall.jpg);
+  background-size: 300px;
+}
+footer {
+  width: 100%;
+  height: 60 px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-image: url(assets/acera.jpg);
+  color: white;
+  font-size: 16px;
+  background-size: 200px;
+}
+.encerts-totals{
+  font-size: 1.6em;
+  padding: 0 10px;
+  background-color: silver;
+}
+
+footer > a:first-of-type {
+  font-size: 0.8em;
+  padding: 0 10px;
+  background-color: rgb(15, 15, 15);
+  color: white;
+}
+
+ul.fachada {
+  max-width: 800px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  padding: 20px;
+  
+
+}
+
+li.ventana {
+  width: 150px;
+  height: 150px;
+  outline: 4px solid black;
+  list-style: none;
+  background: rgba(252, 189, 70, 0.01);
+  background: radial-gradient(circle, rgba(252, 189, 70, 1) 0%, rgba(0, 0, 0, 1) 66%);
+  position: relative;
+
+}
+
+input.ladron {
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-image: url("assets/ladron.png");
+  appearance: none;
+  cursor: crosshair;
+  position: absolute;
+  margin: auto;
+  z-index: 1;
+  top: 40%;
+  bottom: 10px;
+  left: 20px;
+  transition: filter 1s linear;
+  animation: esconder-ladron 1s ease-in-out infinite;
+}
+.ladron:checked {
+  filter: opacity(0.8) hue-rotate(180deg);
+  counter-increment: encerts 1;
+  animation-play-state: paused;
+}
+div.persiana {
+  width: 100%;
+  height: 60%;
+  background-image: url("assets/estor.webp");
+  background-size: cover;
+  appearance: none;
+  position: absolute;
+  z-index: 2;
+}
+
+footer > h3::after{
+  content: counter(encerts);
+}
+
+.ladron:checked::after{
+  position: absolute;
+  right: 5px;
+  bottom: 40px;
+  font-size: 20px;
+  color: silver;
+  content: "+1!";
+}
+@keyframes esconder-ladron {
+  0% {
+    top: 0;
+  } 
+  50% {
+    top: 50%;
+  }
+  100%{
+    top: 0;
+  }
+}
+.ventana:nth-child(2) .ladron {
+  animation-duration: 2s;
+}
+.ventana:nth-child(2n+4) .ladron {
+  animation-duration: 0.5s;
+}
+
+.ventana:nth-child(2n+5) .ladron {
+  animation-duration: 5s;
+}
+
+div.game-over {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: -100vh;
+      left: 0;
+      z-index: 3;
+      background-color: #4ce71c;
+      animation: appear 0.25s forwards;
+      animation-delay: 10s;
+}
+@keyframes appear {
+  0% {
+    top: -100vh;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.game-over > h3.encerts::after{
+  content: counter(encerts);
+
+}
